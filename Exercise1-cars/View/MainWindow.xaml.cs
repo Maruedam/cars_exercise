@@ -102,9 +102,7 @@ namespace Exercise1_cars
 
         private void filtra_lista(object sender, EventArgs e)
         {
-           // listBox1.Items.Clear();
-          //  enumerador1.Clear();
-
+          
             IEnumerable<car> resultadof;
             resultadof = car_List.Where(x => x.Maker == comboBox1.Text && x.Model == comboBox2.Text && x.Color == comboBox3.Text).ToList();
            
