@@ -25,7 +25,6 @@ namespace Exercise1_cars
     {
         
         public List<car> car_List;//en esta lista vamos a cargar el json.
-        public List<car> car_list2;  //esta lista la usaremos para el istbox de la derecha
         public List<int> enumerador1; //lista auxiliar a car_list para saber el id de cada elemento.      
 
         public MainWindow()
@@ -35,17 +34,14 @@ namespace Exercise1_cars
             string outputJSON = File.ReadAllText("Cars.json"); //aqui leemos el json
             car_List = JsonConvert.DeserializeObject<List<car>>(outputJSON); //dserializamos el json en car_list.
 
-            //iniccializamos las otras dos listas
-            car_list2 = new List<car>();
+            //iniccializamos la lista
             enumerador1 = new List<int>();
-
-            //añadimos la posicion no seleccted
-            car_list2.Add(car_List[0]);
             
             //mostramos la lista en el listbox1
             foreach (var item in car_List)
             {
                 listBox1.Items.Add(item);
+
             }
 
             //creamos un String por cada seccion del json a dividir(maker, model, color)
@@ -53,10 +49,9 @@ namespace Exercise1_cars
             IEnumerable<String> busmodelo1 = BusCombobox(car_List, "Model");
             IEnumerable<String> buscolor1 = BusCombobox(car_List, "Color");
 
+            //introducir las secciones en los combobox(metodo abajo)
             NewMethod(busmaker1, busmodelo1, buscolor1);
-
-           
-
+          
         }
 
         private void NewMethod(IEnumerable<string> busmaker1, IEnumerable<string> busmodelo1, IEnumerable<string> buscolor1)
@@ -100,28 +95,73 @@ namespace Exercise1_cars
             return resultado;
         }
 
-        private void filtra_lista(object sender, EventArgs e)
-        {
-          
-            IEnumerable<car> resultadof;
-            resultadof = car_List.Where(x => x.Maker == comboBox1.Text && x.Model == comboBox2.Text && x.Color == comboBox3.Text).ToList();
-           
-
-            //mostramos la lista filtrada en listbx
-            foreach (car resultado in resultadof)
-            {
-                if (resultado.Id != 0)
-                {
-                    listBox1.Items.Add(resultado.Maker + " " + resultado.Model + " " + resultado.Color + " " + resultado.Year);
-                    enumerador1.Add(resultado.Id);
-                }
-                 
-            }
-        }
-
         private void Window_Initialized(object sender, EventArgs e)
         {
            
+        }
+
+        private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            listBox1.Items.Clear();
+            // MessageBox.Show(comboBox1.SelectedItem.ToString());
+            
+            foreach (var item in car_List)
+            {
+                if (comboBox1.SelectedItem.ToString() ==item.Maker)
+                {
+                   listBox1.Items.Add(item);
+                }
+               
+            }
+           
+        }
+
+        private void ComboBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            listBox1.Items.Clear();
+            // MessageBox.Show(comboBox1.SelectedItem.ToString());
+            
+            foreach (var item in car_List)
+            {
+                if (comboBox1.SelectedItem.ToString() == item.Maker && comboBox2.SelectedItem.ToString() == item.Model )
+                {
+                    listBox1.Items.Add(item);
+                }
+               
+            }
+        }
+
+        private void ComboBox3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            listBox1.Items.Clear();
+            // MessageBox.Show(comboBox1.SelectedItem.ToString());
+          
+            foreach (var item in car_List)
+            {
+                if (comboBox3.SelectedItem.ToString() == item.Color && comboBox1.SelectedItem.ToString() == item.Maker && comboBox2.SelectedItem.ToString() == item.Model)
+                {
+                    listBox1.Items.Add(item);
+                }
+              
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            listBox2.Items.Add(listBox1.SelectedItem);
+
+            foreach (var item in  listBox2.Items)
+            {
+                if (listBox1.SelectedItem.ToString() != item)
+                {
+                  listBox2.Items.Add(listBox1.SelectedItem);
+                }
+                else
+                {
+                    MessageBox.Show("El coche ya esta en la lista");
+                }
+            }
+
         }
     }
 }
