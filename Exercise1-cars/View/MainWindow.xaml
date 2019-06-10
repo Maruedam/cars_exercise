@@ -14,13 +14,14 @@
         <ComboBox x:Name="comboBox1" Margin="49,52,104.68,0" VerticalAlignment="Top" SelectionChanged="ComboBox1_SelectionChanged"/>
         <ComboBox x:Name="comboBox2"  HorizontalAlignment="Left" Margin="49,79,0,0" VerticalAlignment="Top" Width="168" SelectionChanged="ComboBox2_SelectionChanged"/>
         <ComboBox x:Name="comboBox3" HorizontalAlignment="Left" Margin="49,106,0,0" VerticalAlignment="Top" Width="168" SelectionChanged="ComboBox3_SelectionChanged"/>
-        <ComboBox Margin="311,52,50,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <ComboBox Margin="311,79,50,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <ComboBox HorizontalAlignment="Left" Margin="311,106,0,0" VerticalAlignment="Top" Width="168" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="comboBox4" Margin="311,52,50,0" VerticalAlignment="Top" Grid.ColumnSpan="2" SelectionChanged="ComboBox4_SelectionChanged"/>
+        <ComboBox x:Name="comboBox5" Margin="311,79,50,0" VerticalAlignment="Top" Grid.ColumnSpan="2" SelectionChanged="ComboBox5_SelectionChanged"/>
+        <ComboBox x:Name="comboBox6" HorizontalAlignment="Left" Margin="311,106,0,0" VerticalAlignment="Top" Width="168" Grid.ColumnSpan="2" SelectionChanged="ComboBox6_SelectionChanged"/>
         <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="247" Margin="49,154,0,0" VerticalAlignment="Top" Width="168"/>
         <ListBox x:Name="listBox2" HorizontalAlignment="Left" Height="247" Margin="311,154,0,0" VerticalAlignment="Top" Width="168" Grid.ColumnSpan="2"/>
-        <Button Content="&gt;" Margin="237,206,28.68,0" VerticalAlignment="Top" Height="19" Click="Button_Click"/>
-        <Button Content="x" Margin="237,318,28.68,0" VerticalAlignment="Top" Height="19"/>
-        <Button Content="Done" Margin="141.32,429,10,0" VerticalAlignment="Top" Height="19" Grid.Column="1"/>
+        <Button Content=">" Margin="237,208,29,0" VerticalAlignment="Top" Height="19" Click="Button_Click"/>
+        <Button Content="x" Margin="237,320,29,0" VerticalAlignment="Top" Height="19" Click="Button_Click_2"/>
+
+        <Button Content="Done" Margin="141.32,429,10,0" VerticalAlignment="Top" Height="19" Grid.Column="1" Click="Button_Click_1"/>
     </Grid>
 </Window>

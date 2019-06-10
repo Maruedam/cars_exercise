@@ -90,7 +90,7 @@ namespace Exercise1_cars.Model
 
         public override string ToString()
         {
-            return Maker + " " + model + " " + Color + " " + Year;
+            return this.Maker + " " + this.model + " " + this.Color + " " + this.Year;
         }
     }
 }
