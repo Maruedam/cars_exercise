@@ -233,24 +233,16 @@ namespace Exercise1_cars
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             car c = (car)listBox1.SelectedItem;
-            Boolean confirmacion = false;
-            IEnumerable<int> res = from o in car_List2 where o.ToString().Equals(listBox1.SelectedItem.ToString()) select 1;
+            var exists = car_List2.Contains(c);
 
-            foreach (int u in res)
+            if (exists)
             {
-                if (u == 1)
-                {
-                    MessageBox.Show("Este coche ya esta en la tabla");
-                    confirmacion = true;
-                }
-                else
-                {
-                    confirmacion = false;
-                }
+                MessageBox.Show("Este coche ya esta en la lista.");
             }
-
-            if (confirmacion == false)
+            else
+            {
                 car_List2.Add(c);
+            }
 
 
             actualizarCombobox();
